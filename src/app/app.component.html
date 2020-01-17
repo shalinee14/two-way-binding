@@ -1,0 +1,62 @@
+<hello name="{{ name }}"></hello>
+<p>
+	Start editing to see some magic happen :)
+</p>
+<h2>{{title}}</h2>
+
+<form>
+	<label>Select month: </label>
+	<select (change)="changeMonth($event)">
+    <option  *ngFor="let i of month"> {{ i }} </option>
+  </select>
+	<br>
+  <!-- if else event binding -->
+	<span *ngIf="isAvailable; else condition1 then condition2"></span>
+
+	<ng-template #condition1> Condition is valid </ng-template>
+	<ng-template #condition2> Condition is Invalid </ng-template>
+
+	<br>
+	<button (click)="myFunction($event)">Click here</button>
+
+<!-- Pipe start -->
+
+  <h1>Custom Pipe</h1> 
+  <b>Square root of 25 is: {{25 | sqrt}}</b> 
+ 
+  <b>Square root of 625 is: {{625 | sqrt}}</b>
+
+
+<!-- Pipe end -->
+
+<!-- event binding start -->
+<div>
+  <h1>Single  Event binding  </h1>  
+  <input type="text" [value]="valueName" (input)="handleInput($event)" (blur)="handleBlur($event)">
+  <button (click)="handleClick()">Change Name</button>
+  <p>{{ valueName }}</p>
+</div>
+
+<!-- event binding start -->
+
+</form>
+
+<!-- two event binding start -->
+ <h1> Two way binding  </h1> 
+  <input type="text" [ngModel]="newName" (ngModelChange)="handleChange($event)">
+  <input type="text" [(ngModel)]="newName">
+  <p>{{ newName }}</p>
+ 
+
+<!-- two event binding end -->
+
+
+<!-- template #ref variable start -->
+
+<h1> template #ref variable  </h1>
+<div>
+<input type="text"  #userName>
+  <button (click)="getUserName(userName.value)">Get Value</button>
+     <p>{{ userName.value }}</p>
+</div>
+<!-- template #ref variable end -->
